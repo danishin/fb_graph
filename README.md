@@ -34,10 +34,10 @@ fb_graph is commandline scala app for automating mundane tasks involving Faceboo
 3. Wait for app to print out:
     ```
     Test User
-    Access Token: 
-    Email: 
-    Password: 
-    CoverPhotoPreviewURL: 
+    Access Token: (expires in 60 days)
+    Email: (used to login to fb)
+    Password: (used to login to fb)
+    CoverPhotoPreviewURL: (used to set cover photo easily)
     ```
 
 4. Login to facebook with provided `email` and `password` and simply make uploaded photos profile picture or cover photo (for cover photo after login, simply paste `CoverPhotoPreviewURL` to url).
