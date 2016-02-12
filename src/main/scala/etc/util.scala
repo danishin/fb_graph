@@ -2,7 +2,9 @@ package etc
 
 import play.api.libs.json.{JsError, JsSuccess, JsResult}
 
-import scala.concurrent.Future
+import scala.concurrent.{Await, Future}
+import scala.concurrent.duration.FiniteDuration
+import scala.util.Try
 
 object util {
   implicit class OptionExt[A](option: Option[A]) {
@@ -22,6 +24,10 @@ object util {
   implicit class ListExt[A](list: List[A]) {
     def traverse[B](f: A => Future[B]) = Future.traverse(list)(f)
     def sequence[B](implicit ev: A <:< Future[B]): Future[List[B]] = Future.sequence(list.map(ev))
+  }
+
+  implicit class FutureExt[A](future: Future[A]) {
+    def run(implicit timeout: FiniteDuration): Try[A] = Try(Await.result(future, timeout))
   }
 
   implicit val executionContext = scala.concurrent.ExecutionContext.Implicits.global
