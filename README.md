@@ -40,7 +40,7 @@ fb_graph is commandline scala app for automating mundane tasks involving Faceboo
     CoverPhotoPreviewURL: 
     ```
 
-4. Login to facebook with provided `email` and `password` and simply make uploaded photos profile picture or cover photo.   
+4. Login to facebook with provided `email` and `password` and simply make uploaded photos profile picture or cover photo (for cover photo after login, simply paste `CoverPhotoPreviewURL` to url).
 This part cannot be automated since facebook prohibits updating profile picture / cover photo through API.
 
 
