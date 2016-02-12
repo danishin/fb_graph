@@ -19,7 +19,9 @@ object Application extends App {
     case Array("test-user", "create") =>
       console.info(s"Create ${test_users.length} Test User")
 
-      test_users.traverse(api.testuser.create(config)).run match {
+      test_users.traverse(api.testuser.create(config))
+        .flatMap(users => writeToFile("test_users.json", Json.prettyPrint(Json.toJson(users))).map(_ => users))
+        .run match {
         case Success(l) =>
           l.zipWithIndex.foreach { case (u, i) =>
             console.info(

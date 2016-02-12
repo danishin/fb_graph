@@ -1,5 +1,8 @@
 package etc
 
+import java.nio.charset.StandardCharsets
+import java.nio.file.{Paths, Files}
+
 import play.api.libs.json.{JsError, JsSuccess, JsResult}
 
 import scala.concurrent.{Await, Future}
@@ -37,6 +40,8 @@ object util {
     def debug(m: String) = println(Console.CYAN + m + Console.RESET + "\n")
     def error(m: String) = println(Console.RED + m + Console.RESET + "\n")
   }
+
+  def writeToFile(path: String, contents: String): Future[Unit] = Future(Files.write(Paths.get(path), contents.getBytes(StandardCharsets.UTF_8)))
 
   def graphURL(path: String) = "https://graph.facebook.com" + path
 }

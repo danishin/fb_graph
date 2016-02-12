@@ -17,6 +17,7 @@ private object UploadPhoto {
 }
 
 case class CreatedTestUser(access_token: String, email: String, password: String, previewCoverPhotoURL: String)
+object CreatedTestUser { implicit val writes = Json.writes[CreatedTestUser] }
 
 object create {
   import etc.util._

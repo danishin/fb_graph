@@ -31,7 +31,7 @@ fb_graph is commandline scala app for automating mundane tasks involving Faceboo
 
 2. Run `sbt "run test-user create"`
 
-3. Wait for app to print out:
+3. Wait for app to print out or write to `test_users.json` at root directory:
     ```
     Test User
     Access Token: (expires in 60 days)
